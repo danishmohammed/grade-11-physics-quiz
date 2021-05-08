@@ -1,0 +1,46 @@
+#updated to include a for loop accessing all the questions and answers from a dictionary (line 27-36)
+
+questions = {"What was the course code for grade 11 Physics? (5 characters) " :"sph3u", "What was the first unit we learned? ": "kinematics", "Is acceleration (a) a vector quantity? (yes/no) ": "yes", "The tendency of an object to resist motion is called: ": "inertia", " What is the equation for Newtons second law? (Don't include any spaces) ": "f=ma", "What is the symbol for gravity? ": "g","The sum of kinetic and gravitational potential energy is ___________ energy: ": "mechanical", "Due to Einsteins famous equation, E=mc^2, if mass is lost in a nuclear reaction, it must be converted into: ": "energy", "Energy outputs are usually always less than 100 percent, because of the production of _______ energy: ": "thermal", "The temperature in Kelvin for -55*C is ____ K (2 decimal places): ": "218.15", "If you increase the resistance in a circuit without changing the current, the voltage (increases/decreases): ": "increases", "Which type of current do you use to charge your phone? (AC/DC) ": "AC", "In a wave, the frequency multiplied by the period equals: ": "1", "In a wave, if a trough meets a crest, destructive interference occurs: (true/false) ": "true"}
+
+name = input("Hi there! What is your name? ")
+print("")
+while name == "":
+  name = input("Please print your name!")
+name = name[0].upper() + name[1:].lower()
+print("Welcome {}! I'm Robot Danish, your virtual classmate from this semester. This quiz is a  14 question consolidation for some of the concepts you have learnt in Physics. Give it a shot, and try not to cheat!\n".format(name))
+
+no = 0
+ready_to_play = input("Are you ready to play? (yes/no): ")
+while ready_to_play.lower() != "yes":
+  no += 1
+  if no > 2:
+    print("It clearly seems like you're ready. Lets go!")
+    break
+  print("Sorry, it doesn't seem like you're ready! Type 'yes' when you are!")
+  ready_to_play = input("Are you ready to play? (yes/no) ")
+else:
+  print("Alright, lets get started! When answering, remember not to type unnecessary spaces!")
+
+number = 1
+score = 0
+
+for i in questions:
+  
+  print("\nQuestion {}:".format(number), end=' ')
+  number += 1
+  answer = input(i)
+  if answer.lower() == questions[i]:
+    print("Correct!")
+    score += 1
+  else:
+    print("Incorrect! The correct answer was {}".format(questions[i]))
+
+percent = round(score * 100 / number)
+print("\nThank you for playing! Your final score was {} out of {}! Thats {} percent!\n".format(score, number,percent))
+question = input("Bonus question! Are you taking grade 12 physics? (yes/no) ")
+if question.lower() == "yes":
+  print("Well I hope this quiz helped! Maybe we'll cross paths again! Have a great 2nd semester!")
+elif question.lower() == "no":
+  print("Aw man! Well, I hope you do great in whatever you pursue! Have a great 2nd semester!")
+else: 
+  print("I'm not sure whether that's a yes or no, but I hope you do great in whichever choice it is! Have a great 2nd semester!")
